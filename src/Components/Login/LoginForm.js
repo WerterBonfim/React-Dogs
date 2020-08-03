@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import { UserContext } from '../../UserContext';
@@ -10,6 +10,7 @@ import Input from '../Forms/Input';
 import Button from '../Forms/Button';
 import useForms from '../../Hooks/useForms';
 import Error from '../../Components/Helper/Error';
+import Head from '../Helper/Head';
 
 
 
@@ -35,6 +36,7 @@ const LoginForm = () => {
 
     return (
         <section className={`animeLeft`} >
+            <Head title="Login" />
             <h1 className='title' >Login</h1>
             <form className={styles.form} onSubmit={handlerSubmit}>
 
@@ -43,15 +45,15 @@ const LoginForm = () => {
 
                 {!!loading && (<Button disabled >Carregando...</Button>)}
                 {!!!loading && (<Button>Entrar</Button>)}
-                <Error error={error} />
+                <Error error={error && 'Dados incorretos'} />
 
             </form>
             <Link className={styles.perdeu} to="/login/perdeu">Perdeu a Senha ?</Link>
             <div className={styles.cadastro}>
                 <h2 className={styles.subtitle} >Cadastre-se</h2>
                 <p>Ainda não possui conta ? Cadatre-se no site.</p>
+            <Link className={`${stylesButton.button}`} to="/login/criar">Cadastro</Link>
             </div>            
-            <Link className={stylesButton.button} to="/login/criar">Cadastro</Link>
         </section>
     )
 }

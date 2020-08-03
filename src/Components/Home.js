@@ -1,13 +1,22 @@
-import React from 'react'
-
+import React from 'react';
 import styles from './Home.module.css'
 
+import Head from './Helper/Head';
+
+
+import Feed from './Feed/Feed';
+
+
 const Home = () => {
-    return (
-        <div className={styles.home}>
-            <h1>Home</h1>
-        </div>
-    )
+    return <section className={`container mainContainer ${styles.home}`}>
+        <Head 
+            title="Fotos" 
+            description="Home do site Dogs, com o feed de fotos."
+        />
+        <Feed />
+        
+    </section>
+
 }
 
 export default Home;

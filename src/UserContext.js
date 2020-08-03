@@ -8,7 +8,7 @@ export const UserContext = createContext();
 export const UserStorage = ({ children }) => {
 
     const [data, setData] = useState(null);
-    const [login, setLogin] = useState(null);
+    const [login, setLogin] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -82,7 +82,6 @@ export const UserStorage = ({ children }) => {
             if (!!!token)
                 return;
 
-
             try {
 
                 setError(null);
@@ -94,7 +93,7 @@ export const UserStorage = ({ children }) => {
                 if (!response.ok)
                     throw new Error('Token inválido');
 
-                const data = await response.json();
+                //const data = await response.json();
                 await getUser(token);
 
             } catch (err) {
